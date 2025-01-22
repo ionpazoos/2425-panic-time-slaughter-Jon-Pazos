@@ -7,7 +7,8 @@ const getAllTimes = async (req, res) => {
     const times = await TimeServices.getAllTimes();
     res.status(200).json(times);
   } catch (error) {
-    res.status(500).json({ error: 'Error obteniendo times' });
+    res.status(500).send({status: "Error obteniedo TIMES", error: error?.message})
+
   }
 };
 const postTime = async (req, res) => {

@@ -10,14 +10,5 @@ const getAllCharacters = async (req, res) => {
   }
 };
 
-// Crear un nuevo entrenamiento
-const createWorkout = async (req, res) => {
-  try {
-    const workout = await CharacterService.createWorkout(req.body);
-    res.status(201).json(workout);
-  } catch (error) {
-    res.status(500).json({ error: 'Error creando entrenamiento' });
-  }
-};
 
-module.exports = { getAllCharacters, createWorkout };
+module.exports = { getAllCharacters};

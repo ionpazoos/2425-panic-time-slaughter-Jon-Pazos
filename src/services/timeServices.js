@@ -17,6 +17,8 @@ const postTime = async () => {
   console.log("travesia");
   const tavesia = await travesia();
   console.log("TARDE(17:00 horas)");
+  console.log("Catatonia");
+  const catatonia = CharacterService.catatonia();
 
 
   

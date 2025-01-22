@@ -3,9 +3,6 @@ const router = express.Router();
 const { getAllWorkouts, createWorkout } = require('../controllers/workoutController');
 
 // Ruta para obtener todos los entrenamientos
-router.get('/get', getAllWorkouts);
-
-// Ruta para crear un nuevo entrenamiento
-router.post('/create', createWorkout);
+router.get('/players', getAllWorkouts);
 
 module.exports = router;

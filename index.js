@@ -1,7 +1,7 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
-const workoutRoutes = require('./routes/workoutRoutes');
+const express = require("express");
+const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+const connectDB = require("./src/database/config");
 
 // Configurar variables de entorno
 dotenv.config();
@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 5000;
 // Middleware para parsear JSON
 app.use(bodyParser.json());
 
-// Ruta principal
-app.use('/api/workouts', workoutRoutes);
+//DB conexion
+connectDB();
 
 // Arrancar el servidor
 app.listen(PORT, () => {

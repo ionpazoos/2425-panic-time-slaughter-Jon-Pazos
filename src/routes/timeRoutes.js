@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getAllCharacters } = require('../controllers/characterControllers');
+const { getAllTimes } = require('../controllers/timeControllers');
 
 // Ruta para obtener todos los entrenamientos
-router.get('/players', getAllCharacters);
+router.get('/time', getAllTimes);
+router.post('/time', );
 
 module.exports = router;

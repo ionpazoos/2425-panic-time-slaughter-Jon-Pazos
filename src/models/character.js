@@ -1,38 +1,33 @@
 const mongoose = require("mongoose");
-const PreciousStone = require("./precious_stone");
-const Saddlebag = require("./saddlebag");
-const Time = require("./time");
-const Weapons = require("./weapons");
+const { Schema } = mongoose;
 
-const StatsSchema = new Schema({
-  strength: { type: Number },
-  dexterity: { type: Number },
-  stamina: { type: Number },
-});
-const PouchSchema = new Schema({
-  coins: { type: Number },
-  gold: { type: Number },
-  preciusStone: { type: [PreciousStone] },
-});
+const character = new Schema({
+  name: String,
+  occupation: String,
+  description: String,
+  stats: {
+      strength: Number,
+      dexterity: Number,
+      stamina: Number
+  },
+  equipment:{
+    saddlebag:[
+        { type: mongoose.Schema.Types.ObjectId, ref: "Saddlebag" },
+      ],
+      quiver: Number,
+      weapons:[
+        { type: mongoose.Schema.Types.ObjectId, ref: "Weapon" },
+      ],
+      pouch:{
+        coins: Number,
+        gold: Number,
+        precious_stones:[
+          { type: mongoose.Schema.Types.ObjectId, ref: "Precious_stone" },
+        ]
+      },
+      miscellaneous: [String]
+  }
+})
+ 
 
-const EquipmentSchema = new Schema({
-  saddlebag: { type: [Saddlebag] },
-  quiver: { type: Number },
-  weapons: { type: [Weapons] },
-  Pouch: { type: PouchSchema },
-  miscellaneous: { type: [String] },
-});
-
-const characterSchema = new mongoose.Schema({
-  _id: { type: mongoose.Types.ObjectId, auto: true },
-  name: { type: String, required: true },
-  occupation: { type: String, required: true },
-  description: { type: String, required: true },
-  stats: { type: StatsSchema, required: true },
-  equipment: { type: EquipmentSchema, required: true },
-});
-
-// Crear modelo Workout
-const Character = mongoose.model("Character", characterSchema);
-
-module.exports = Character;
+module.exports = mongoose.model("Character", character);

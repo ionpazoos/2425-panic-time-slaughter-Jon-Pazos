@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const time = new Schema({
+const time = new mongoose.Schema({
   _id: { type: mongoose.Types.ObjectId, auto: true },
   day_number: { type: Number },
   day_week: { type: String, required: true },
